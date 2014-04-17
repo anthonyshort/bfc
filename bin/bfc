@@ -10,8 +10,8 @@ program
   .parse(process.argv);
 
 var args = program.args;
-var data = fs.readFileSync(path.resolve(args[0]), 'utf-8');
-
+var filePath = path.resolve(args[0]);
+var data = fs.readFileSync(filePath, 'utf-8');
 
 // Rename all of the requires. Browserify sees the require calls
 // and freaks out about them as it tries to resolve them
