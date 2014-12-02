@@ -1,24 +1,14 @@
 #!/usr/bin/env node
 
 var walk = require('falafel');
-var program = require('commander');
-var fs = require('fs');
-var path = require('path');
-
-program
-  .usage('[path]')
-  .parse(process.argv);
-
-var args = program.args;
-var filePath = path.resolve(args[0]);
-var data = fs.readFileSync(filePath, 'utf-8');
 
 // Rename all of the requires. Browserify sees the require calls
 // and freaks out about them as it tries to resolve them
-var output = walk(data, function (node) {
-  if (node.type === 'Identifier' && node.name === 'require') {
-    node.update('_require');
-  }
+process.stdin.on('data', function(data){
+  var output = walk(data.toString(), function (node) {
+    if (node.type === 'Identifier' && node.name === 'require') {
+      node.update('_require');
+    }
+  });
+  process.stdout.write(output.toString());
 });
-
-process.stdout.write(output.toString());

@@ -9,7 +9,7 @@ npm install -g bfc
 ## Usage
 
 ```
-bfc ./build/build-standalone.js > ./dist/output.js
+bfc < ./build/build-standalone.js > ./dist/output.js
 ```
 
 You can then make `dist/output.js` the `main` field in your package.json and it will require load up just fine.

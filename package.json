@@ -1,10 +1,9 @@
 {
   "name": "bfc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Make built components usable by browserify",
   "dependencies": {
-    "falafel": "~0.3.1",
-    "commander": "~2.2.0"
+    "falafel": "~0.3.1"
   },
   "bin": {
     "bfc": "./bin/bfc"
