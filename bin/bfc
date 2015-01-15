@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
+var stdin = require('stdin');
 var walk = require('falafel');
 
 // Rename all of the requires. Browserify sees the require calls
 // and freaks out about them as it tries to resolve them
-process.stdin.on('data', function(data){
-  var output = walk(data.toString(), function (node) {
+stdin(function(data){
+  console.log(data);
+  var output = walk(data, function (node) {
     if (node.type === 'Identifier' && node.name === 'require') {
       node.update('_require');
     }
